@@ -19,4 +19,8 @@ export default {
 html{
   font-size: 37.5px;
 }
+#app{
+  width: 100%;
+  height: 100%;
+}
 </style>
