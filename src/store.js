@@ -5,6 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    show:0,
     cartlist: [
       {
         img: 'https://p1.maiyaole.com/img/971/971672/120_120.jpg?a=1127706105',

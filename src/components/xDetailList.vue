@@ -1,5 +1,5 @@
 <template>
-  <div style="width:100%;height:100%;">
+  <div>
     <header class="pro_header new_header">
       <router-link to="/xCommodity" href="javascript:void(0)" class="common_left_btn"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABABAMAAABYR2ztAAAAJFBMVEVHcExjZ4FoaoRoa4Vpa4Voa4Voa4Voa4VobYZoa4Voa4Voa4WUaLDoAAAAC3RSTlMACRvbY3+9TjTxo6pDXvYAAACoSURBVEjHY2AYBSMduBCQl9rtgFeecfXuArwKxHZvxW9A9u4AygywJuBE5d1b8MozWRPwgvLu6XjlOax34jegc/cM/AbM3tlAkQHsszfjN6BytxF+F+zerIBXAevu7QwEQpFAIACDkaARBGKSYFSCUhMBIwglJ8IJkggjVu9egF8F1+5dBDLe6t0LGQjEyDYB/CqidydSaoQ3oeBk2d1AwCNKo4XsMAUAKpozCPEVxGYAAAAASUVORK5CYII="></router-link>
       <ul class="common_tt_tab">
@@ -34,18 +34,6 @@
               <div class="ypc-swipe">
                 <div class="ypc-swipe-items-wrap">
                   <section class="ypc-swipe-item current"><img :src="this.detail.mainimg1"></section>
-                </div>
-                <div class="ypc-swipe-indicator-wrap ypc-swipe-indicator-wrap-background">
-                  <div class="ypc-swipe-item-title"></div>
-                  <ul class="ypc-swipe-indicators">
-                    <li class="current ypc-swipe-indicator"></li>
-                    <li class="ypc-swipe-indicator"></li>
-                    <li class="ypc-swipe-indicator"></li>
-                    <li class="ypc-swipe-indicator"></li>
-                    <li class="ypc-swipe-indicator"></li>
-                    <li class="ypc-swipe-indicator"></li>
-                  </ul>
-                  <!---->
                 </div>
               </div>
               <div class="pageNum">1/6</div>
@@ -294,11 +282,10 @@
           <i class="tab_badge" style="display: none;"></i>
           <i class="tab_badge" style="display: none;">99+</i>
         </a>
-        <div class="pro_tab_item pro_add_car">
+        <div class="pro_tab_item pro_add_car" @click="show">
           <span>加入购物车</span>
         </div>
       </footer>
-
     </div>
 
   </div>
@@ -317,6 +304,7 @@ export default Vue.extend({
     this.brandId = this.$route.query.brandId;
     // console.log(this.brandId);
     this.getData();
+    // this.show()
   },
   methods: {
     async getData(callback) {
@@ -324,6 +312,9 @@ export default Vue.extend({
         this.detail = data3.data.product_info
         // console.log(this.detail)
     },
+    show(){
+      return this.$store.state.show = 1
+    }
   },
 });
 </script>
@@ -451,6 +442,9 @@ img {
   width: 0.85333333rem;
   height: 0.85333333rem;
   vertical-align: top;
+}
+img {
+  vertical-align: middle;
 }
 // ============================================
 
@@ -617,7 +611,6 @@ img {
   height: 0.42666667rem;
   margin-right: 0.08rem;
 }
-
 .pro_content .pro_sider_des {
   padding: 0 0.26666667rem 0.26666667rem;
   font-size: 0.32rem;
@@ -1061,7 +1054,7 @@ span {
 
 .pro_bar_tab .pro_tab_item .barFav {
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAMAAAC7IEhfAAAAbFBMVEVHcEz////////////////////////////9/f7///////////////////////////////////////////////////+go7P39/i5u8fw8POmqbjm5+vg4eaqrbuxs8HAws3b3OLS1NvMzdbO0NjL7AZ0AAAAFnRSTlMADB4q4hRh//xy15gFVYuAzrbDQaXsRig04QAAAbhJREFUOMvdVNmWgyAMdUVAQe3CIqC0/f9/HIK2ta3OzOOcyYMCuYTk3kCS/EtLj4TzFmXzLENtzckx/YDlJyyN9UZXFDUNopW23hqJT/lrtBpbJaK5qywKeXXzTFlcr6JmVI9hdZwmNYT/NIXPoKYpLmqa3XFlYYPjInFBz5WJkZWpzrTA8hI22qJcgL0JHtkxOCPnWHuvMYfcUtbJsM/0Mw5JJxRuH/FJXZN7jIRgJZxEcdzdwpDssUZCmFsXiakGcTns83u4iKGCRJAWYom9aeDX4Oc27Mj2gVk40XIAeuGqch9YVk54ALZ2yWHHoAYLnDDIgewDCfhZzGEM9Te7QHoT41wD1P8djw/2GAZl2DaOgTJ3J2g94U0qEZ6eWofu8YDcOJ0Azj+6J8nPHvqHv+M49I4/r7jLoSNHWb/iajlCN75wnFEzBORpxVJzCrjB0Dd1y04Pwun+cUHSXjsx6O5D3PQQHE4fFke5TD/va9LEEGYOUXaQiu43BVsltZHyW5kqlhlJUO8krK3FQBzGQOvzum22AEih1I5Qr+Je4QG4YvTTo3YspLWyOP7i+WNty9K/9CB/AQUfJbDKS+9cAAAAAElFTkSuQmCC);
-  background-size: 0.58666667rem 0.58666667rem;
+  background-size: 100% 100%;
 }
 .pro_bar_tab .pro_tab_item .iconfont {
   width: 0.66666667rem;
@@ -1097,7 +1090,10 @@ span {
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAuwAAADICAYAAACzgrT1AAAAGXRFW…AQ7AAAAAAAgGAHAAAAAAAEOwAAAAAAgh0AAAAAAKrg/wUYAKlExwMwHIZIAAAAAElFTkSuQmCC);
   background-size: 9.97333333rem auto;
 }
-
+#selfCartIcon{
+      color: #FF6666;
+      // text-decoration: none;
+}
 .pro_bar_tab .pro_add_car,
 .pro_bar_tab .pro_overseas_add_car,
 .pro_bar_tab .pro_add_list {
