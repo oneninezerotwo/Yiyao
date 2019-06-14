@@ -38,5 +38,35 @@ export default new Router({
       name: 'xDetail',
       component: () => import('./views/xDetail.vue'),
     },
+    {
+      path: '/setting',
+      name: 'setting',
+      component: () => import(/* webpackChunkName: "about" */ './views/My/Setting.vue'),
+    },
+    {
+      path: '/city',
+      name: 'city',
+      component: () => import(/* webpackChunkName: "about" */ './views/My/City.vue'),
+    },
+    {
+      path: '/mine',
+      name: 'mine',
+      component: () => import(/* webpackChunkName: "about" */ './views/My.vue'),
+    },
+    {
+      path: '/newlogin',redirect: '/newlogin1', 
+      name: 'newlogin',
+      component: () => import(/* webpackChunkName: "about" */ './views/newLogin.vue'),
+      children:[{
+        path: '/newlogin1',
+        name: 'newlogin1',
+        component: () => import(/* webpackChunkName: "about" */ './components/loginMain1.vue'),
+      },
+      {
+        path: '/newlogin2',
+        name: 'newlogin2',
+        component: () => import(/* webpackChunkName: "about" */ './components/loginMain2.vue'),
+      }]
+    },
   ]
 })
