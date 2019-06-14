@@ -49,6 +49,7 @@ export default {
         logout(){
             localStorage.removeItem('name');
             this.$router.push({ path: '/'});
+           this.$store.commit("Loginout");
         }
     }
 }

@@ -1,35 +1,64 @@
 <template>
   <transition name="bounce">
-    <div class="pro_series_bg pro_series_bg_show" style="" v-if="show">
+    <div class="pro_series_bg pro_series_bg_show" v-if="show">
       <div class="pro_series_header" @click="hite"></div>
 
       <div class="pro_series pro_series_show" v-show="show">
-        <div class="pro_series_top"><img alt="" class="series_img" :src="this.detail2.mainimg1" lazy="loaded">
+        <div class="pro_series_top">
+          <img alt class="series_img" :src="this.detail2.mainimg1" lazy="loaded">
           <span class="price">
-            <span>¥</span>{{this.detail2.pcSalePrice}}</span>
-          <span class="choose_mark">已选：
-            <em> 成人 </em>
-          </span> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAA05JREFUWAnVmc9PE0EUx9/aYGkpoIliQrwIRg1X/hCU/0D0IsGD0fDLwyYYARH+AQ9492L8E/So4QTRaMSLCahtgtAfQAuu3+/SYdel3c4uu1Bf8jrTznszn77OvJmdGhJSLMvqhesAtB/a7VJUZc2lS6i/MQxjlQ2xCqC6oFPQZWhQoQ99uyKHRKcZqAnNQ48r7MOEZiIBRUeD0B/QqIV9DoaGhLMBNaF/oHEJ+zahRiBQOKSgr6AnJRwrpQUJQ0buJOFUEDhm40jCyFQep1CavlEEEBdEnHOu0Xfm2P8snMOQooHL/iv0ku+3iL/xJ4a4isRe4FBnXOM9RP204YhDBrLYYkcQ0WN251YUTfI86Ps4r4xeL6L4S0Xwvg7c23dLcm9kWh48WpCtfFEbIJf7bfvR9/2HFR0/BmqEhgrwpo5XX1+PpNOtUqlUZGZ2UTY37Wni65rNbsjM3KIkEgk519kuN65f8bV3Nd5inTmPpxIuDi3J5jZkdu6l7O6WJZNJy+TYHenoaKvpS7jZ57StSDtsJ8aG6trW7ACLhRHkkUlbLl44L+OjtyWZPCuFwrbMPFuUra2jP3cEcGQaICDPc4HEgWyRfKF0BDIiODL1E5CHzcBSDzJCODJ1cw5+RuVaYMKqgzMnK5JOtcre/r6Uy6HnnBfjCwHz+PRY+Y+Q05iLOzu7ItjvO7FoJsfrLx4vhc/7An9iy8dAr0n1wNKwxFLv9bz9rCwCrvtZNGpTc65S3pOO9jZJtSalWKq/uhv152lfJyCfwEKJglN57vHEXTvXJZO1V3eIQdZCA3rhVBKut7pDwNHFBuRzayCpB6c6iRByKfhWF2D7cqeg0Ftd9Ylf64jRKHIqgqr0RnLq6Yua26Ky95QrZOMcpLw+KPxfP376JqXSjrS0JJDn9DZ+Qk6MDuFgkZJicRsnoT3/QZxWh4kHViZsaKyyuvpdt3+y2FckdgR5cgX4vAMfT62n57Jux/NVJvl/HppAzOPxMDS6jUo3Xo4dxx6usjifumv47U3diRKDnelmqVnHoMyNzXv1QWoANu/lkQprNZImyjivQsJdvynIajSb8wLTA9m8V8AeUO44T6DL0KBCn8CX6IeJ2g2iU8dgJ/I3xF998g4ZqqZnmAAAAABJRU5ErkJggg==" class="dialogClose" @click="hite"></div>
+            <span>¥</span>
+            {{this.detail2.pcSalePrice}}
+          </span>
+          <span class="choose_mark">
+            已选：
+            <em>成人</em>
+          </span>
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAA05JREFUWAnVmc9PE0EUx9/aYGkpoIliQrwIRg1X/hCU/0D0IsGD0fDLwyYYARH+AQ9492L8E/So4QTRaMSLCahtgtAfQAuu3+/SYdel3c4uu1Bf8jrTznszn77OvJmdGhJSLMvqhesAtB/a7VJUZc2lS6i/MQxjlQ2xCqC6oFPQZWhQoQ99uyKHRKcZqAnNQ48r7MOEZiIBRUeD0B/QqIV9DoaGhLMBNaF/oHEJ+zahRiBQOKSgr6AnJRwrpQUJQ0buJOFUEDhm40jCyFQep1CavlEEEBdEnHOu0Xfm2P8snMOQooHL/iv0ku+3iL/xJ4a4isRe4FBnXOM9RP204YhDBrLYYkcQ0WN251YUTfI86Ps4r4xeL6L4S0Xwvg7c23dLcm9kWh48WpCtfFEbIJf7bfvR9/2HFR0/BmqEhgrwpo5XX1+PpNOtUqlUZGZ2UTY37Wni65rNbsjM3KIkEgk519kuN65f8bV3Nd5inTmPpxIuDi3J5jZkdu6l7O6WJZNJy+TYHenoaKvpS7jZ57StSDtsJ8aG6trW7ACLhRHkkUlbLl44L+OjtyWZPCuFwrbMPFuUra2jP3cEcGQaICDPc4HEgWyRfKF0BDIiODL1E5CHzcBSDzJCODJ1cw5+RuVaYMKqgzMnK5JOtcre/r6Uy6HnnBfjCwHz+PRY+Y+Q05iLOzu7ItjvO7FoJsfrLx4vhc/7An9iy8dAr0n1wNKwxFLv9bz9rCwCrvtZNGpTc65S3pOO9jZJtSalWKq/uhv152lfJyCfwEKJglN57vHEXTvXJZO1V3eIQdZCA3rhVBKut7pDwNHFBuRzayCpB6c6iRByKfhWF2D7cqeg0Ftd9Ylf64jRKHIqgqr0RnLq6Yua26Ky95QrZOMcpLw+KPxfP376JqXSjrS0JJDn9DZ+Qk6MDuFgkZJicRsnoT3/QZxWh4kHViZsaKyyuvpdt3+y2FckdgR5cgX4vAMfT62n57Jux/NVJvl/HppAzOPxMDS6jUo3Xo4dxx6usjifumv47U3diRKDnelmqVnHoMyNzXv1QWoANu/lkQprNZImyjivQsJdvynIajSb8wLTA9m8V8AeUO44T6DL0KBCn8CX6IeJ2g2iU8dgJ/I3xF998g4ZqqZnmAAAAABJRU5ErkJggg=="
+            class="dialogClose"
+            @click="hite"
+          >
+        </div>
         <div class="pro_series_info">
           <dl class="series_unit">
             <dt>适用人群</dt>
             <dd>
               <span class="cur">成人</span>
-              <span class="">儿童</span>
+              <span>儿童</span>
             </dd>
           </dl>
         </div>
         <div class="pro_change_num">
           <span class="num_mark">购买数量</span>
           <div class="my_price_count">
-            <a href="javascript:;" class="my_btn_reduce btn_ok disabled" :class="{'active':count > 1}" v-on:click="subtract()"> - </a>
-            <input type="tel" maxlength="6" id="inputTag4Series" class="my_input_nub" value="1" v-model="count">
-            <a href="javascript:;" class="my_btn_add btn_ok" v-on:click="add()"> + </a>
+            <a
+              href="javascript:;"
+              class="my_btn_reduce btn_ok disabled"
+              :class="{'active':count > 1}"
+              v-on:click="subtract()"
+            >-</a>
+            <input
+              type="tel"
+              maxlength="6"
+              id="inputTag4Series"
+              class="my_input_nub"
+              value="1"
+              v-model="count"
+            >
+            <a href="javascript:;" class="my_btn_add btn_ok" v-on:click="add()">+</a>
           </div>
         </div>
+<<<<<<< HEAD
         <span class="my_btn_self pro_sure_btn" :data-item="detail2.brandId" @click="addtocart($event);hite()">加入购物车</span>
+=======
+        <span
+          class="my_btn_self pro_sure_btn"
+          :data-item="detail2.brandId"
+          @click="addtocart($event)"
+        >加入购物车</span>
+>>>>>>> 319ecbf2b4531b3becac36746836b65ec2dbc8f1
       </div>
-
     </div>
   </transition>
 </template>
@@ -73,7 +102,11 @@ export default Vue.extend({
           this.brandId
       );
       this.detail2 = data4.data.product_info;
+<<<<<<< HEAD
       // console.log(this.detail2)
+=======
+      // console.log(this.detail2);
+>>>>>>> 319ecbf2b4531b3becac36746836b65ec2dbc8f1
     },
     addtocart(e) {
       let cart = {
@@ -84,7 +117,27 @@ export default Vue.extend({
         selected: true,
         qty: this.count
       };
+<<<<<<< HEAD
       this.$store.commit("addToCart", cart);
+=======
+      let arr = this.$store.state.cartlist.filter(
+        item => item.guid == cart.guid
+      );
+
+      this.hite();
+
+      this.$message({
+        message: "添加成功！",
+        type: "success"
+      });
+
+      if (arr.length == 0) {
+        // 判断购物车内有无该类商品，有则更改qty，否则加入
+        this.$store.commit("addToCart", cart);
+      } else {
+        this.$store.commit("addCartchangeQty", { guid: cart.guid, qty: cart.qty });
+      }
+>>>>>>> 319ecbf2b4531b3becac36746836b65ec2dbc8f1
     }
   }
 });

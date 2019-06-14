@@ -57,9 +57,9 @@ export default {
             }
         },
         newlogin(){
-           
             this.$router.push({ path: '/mine', query: { name: this.content }});
            localStorage.setItem('name', this.content);
+           this.$store.commit("Login");
         }
     }
 }

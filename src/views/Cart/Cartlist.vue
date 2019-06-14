@@ -7,7 +7,7 @@
     <div class="shop_cart" v-for="(goods,idx) in cartlist" :key="idx">
       <div class="cart_unit" :class="isEdit?'edit_statu':''">
         <div class="cart_pro">
-          <span class="ico_box" @click="select(idx)">
+          <span class="ico_box" @click="select(goods.guid)">
             <i class="icon iconfont" :class="goods.selected?'icon_check':'icon_nocheck'"></i>
           </span>
           <div class="pro_img_box">
@@ -20,16 +20,16 @@
               href="javascript:;"
               class="btn_reduce btn_ok"
               :class="goods.qty<=1?'disabled':''"
-              @click="reduce(idx,goods.qty)"
+              @click="reduce(goods.guid,goods.qty)"
             ></a>
             <input
               type="tel"
               maxlength="4"
               class="input_nub"
               v-model="goods.qty"
-              @blur="inputqty(idx,goods.qty)"
+              @blur="inputqty(goods.guid,goods.qty)"
             >
-            <a href="javascript:;" class="btn_add btn_ok"  @click="add(idx,goods.qty)"></a>
+            <a href="javascript:;" class="btn_add btn_ok"  @click="add(goods.guid,goods.qty)"></a>
           </div>
           <span class="price">¥{{goods.price}}</span>
         </div>
@@ -68,25 +68,25 @@ export default {
   },
   methods: {
     // 减少购物车数量
-    reduce(idx, qty) {
+    reduce(guid, qty) {
       qty--;
       qty < 1 ? (qty = 1) : (qty = qty);
-      this.$store.commit("changeQty", { idx, qty });
+      this.$store.commit("changeQty", { guid, qty });
     },
     // 增加购物车数量
-    add(idx, qty) {
+    add(guid, qty) {
       qty++;
-      this.$store.commit("changeQty", { idx, qty });
+      this.$store.commit("changeQty", { guid, qty });
     },
     // 用v-model在input框完成双向数据绑定，传goods.qty过来才是输入的数量，如果用v-text会导致goods.qty依然为输入前的值
-    inputqty(idx, qty) {
+    inputqty(guid, qty) {
       // 判断输入数值为数字
       qty * 1 === qty * 1 ? (qty = qty) : (qty = 1);
-      this.$store.commit("changeQty", { idx, qty });
+      this.$store.commit("changeQty", { guid, qty });
     },
     // 是否选中高亮
-    select(idx){
-         this.$store.commit("select", idx);
+    select(guid){
+         this.$store.commit("select", guid);
     },
     // 全选
     allselect(isallselected){
