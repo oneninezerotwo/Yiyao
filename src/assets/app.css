@@ -1586,9 +1586,9 @@ html #__vconsole {
     content: "\E600"
 }
 
-.icon_shopcar:before {
+/* .icon_shopcar:before {
     content: "\E601"
-}
+} */
 
 .icon_my:before {
     content: "\E602"

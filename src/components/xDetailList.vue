@@ -277,8 +277,8 @@
           <span class="tab_label">收藏</span>
         </a>
         <a href="javascript:void(0)" class="pro_tab_item">
-          <span id="selfCartIcon" class="icon_img icon_shopcar"></span>
-          <span class="tab_label">购物车</span>
+          <span id="selfCartIcon" class="icon_img icon_shopcar" v-text="this.$store.state.cartlist.length"></span>
+          <router-link to="/cart" class="tab_label">购物车</router-link>
           <i class="tab_badge" style="display: none;"></i>
           <i class="tab_badge" style="display: none;">99+</i>
         </a>
@@ -310,7 +310,7 @@ export default Vue.extend({
     async getData(callback) {
       const data3 = await this.$axios('https://www.easy-mock.com/mock/5cf638f131d44a153b4b0a69/example/data'+this.brandId)
         this.detail = data3.data.product_info
-        console.log(this.detail)
+        // console.log(this.detail)
     },
     show(){
       return this.$store.state.show = 1
@@ -1074,7 +1074,7 @@ span {
   line-height: 0.61333333rem;
   padding-top: 0;
   padding-bottom: 0;
-  font-size: 0.32rem;
+  font-size: 0.5rem;
   margin: 0.10666667rem auto 0 auto;
   display: block;
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAuwAAADICAYAAACzgrT1AAAAGXRFW…AQ7AAAAAAAgGAHAAAAAAAEOwAAAAAAgh0AAAAAAKrg/wUYAKlExwMwHIZIAAAAAElFTkSuQmCC);

@@ -27,7 +27,7 @@
             <a href="javascript:;" class="my_btn_add btn_ok" v-on:click="add()"> + </a>
           </div>
         </div>
-        <span class="my_btn_self pro_sure_btn" :data-item="detail2.brandId" @click="addtocart($event)">加入购物车</span>
+        <span class="my_btn_self pro_sure_btn" :data-item="detail2.brandId" @click="addtocart($event);hite()">加入购物车</span>
       </div>
 
     </div>
@@ -40,13 +40,13 @@ export default Vue.extend({
   data() {
     return {
       count: 1,
-      detail2:[],
-      brandId:null,
+      detail2: [],
+      brandId: null
     };
   },
-  created(){
-    this.brandId = this.$route.query.brandId
-    this.getData2()
+  created() {
+    this.brandId = this.$route.query.brandId;
+    this.getData2();
   },
   computed: {
     show() {
@@ -68,24 +68,24 @@ export default Vue.extend({
       }
     },
     async getData2(callback) {
-      const data4 = await this.$axios('https://www.easy-mock.com/mock/5cf638f131d44a153b4b0a69/example/data'+this.brandId)
-        this.detail2 = data4.data.product_info
-        console.log(this.detail2)
+      const data4 = await this.$axios(
+        "https://www.easy-mock.com/mock/5cf638f131d44a153b4b0a69/example/data" +
+          this.brandId
+      );
+      this.detail2 = data4.data.product_info;
+      // console.log(this.detail2)
     },
-    addtocart(e){
-        let cart={
-          guid:this.detail2.itemId,
-          img:this.detail2.mainimg1,
-          price: this.detail2.pcSalePrice,
-          name: this.detail2.productName,
-          selected: true,
-          qty: this.count,
-        };
-        this.$store.commit("addToCart",cart);
-
-
+    addtocart(e) {
+      let cart = {
+        guid: this.detail2.itemId,
+        img: this.detail2.mainimg1,
+        price: this.detail2.pcSalePrice,
+        name: this.detail2.productName,
+        selected: true,
+        qty: this.count
+      };
+      this.$store.commit("addToCart", cart);
     }
-
   }
 });
 </script>
