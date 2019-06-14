@@ -7,12 +7,12 @@
                 </router-link>
                 <div data-v-3f01022a="" class="search_box">
                     <i data-v-3f01022a="" class="icon iconfont icon_search search_icon"></i> <input data-v-3f01022a="" id="searchKeyInput" type="text" name="" data-ywpoint="null_null_null_null_I0034_0" class="search_box_input"></div>
-                <span data-v-3f01022a="" class="search_header_right_btn">
+                <router-link to="/cart" data-v-3f01022a="" class="search_header_right_btn">
                     <i data-v-3f01022a="" data-ywpoint="null_null_null_null_I0035_0" class="icon iconfont icon_shopcar">
                         <!---->
                         <!---->
                     </i>
-                </span>
+                </router-link>
             </div>
         </header>
 

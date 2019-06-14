@@ -38,7 +38,7 @@ export default {
     },
     // 选中商品类型总数
     totalClass() {
-        this.totalqty=0;
+      this.totalqty=0;
       this.$store.state.cartlist.forEach(element => {
         if (element.selected) {
           this.totalqty += element.qty / element.qty;

@@ -113,6 +113,7 @@ export default {
             this.$router.push({ path: '/mine', query: { name: this.content }});
            localStorage.setItem('name', this.content);
            this.state5 = false
+           this.$store.commit("Login");
         }else{
             this.state5 = true
         }

@@ -14,13 +14,6 @@ export default new Vuex.Store({
       //   price: '12.80',
       //   name: '信龙 炉甘石洗剂 100ml',
       //   selected: true
-      // },
-      // {
-      //   img: 'https://p1.maiyaole.com/img/971/971672/120_120.jpg?a=1127706105',
-      //   qty: 1,
-      //   price: '12.80',
-      //   name: '信龙 炉甘石洗剂 100ml',
-      //   selected: true
       // }
     ],
     cartstate: "编辑",
@@ -36,21 +29,26 @@ export default new Vuex.Store({
       }
     },
     // 购物车修改数量
-    changeQty(state, {
-      idx,
-      qty
-    }) {
-      state.cartlist = state.cartlist.map(function (goods, index) {
-        if (index == idx) {
+    changeQty(state, {guid,qty}) {
+      state.cartlist = state.cartlist.map(function (goods) {
+        if (goods.guid == guid) {
           goods.qty = qty;
         }
         return goods;
       })
     },
+    addCartchangeQty(state, {guid,qty}) {
+      state.cartlist = state.cartlist.map(function (goods) {
+        if (goods.guid == guid) {
+          goods.qty += qty;
+        }
+        return goods;
+      })
+    },
     // 购物车单选状态
-    select(state, idx) {
-      state.cartlist = state.cartlist.map(function (goods, index) {
-        if (index == idx) {
+    select(state, guid) {
+      state.cartlist = state.cartlist.map(function (goods) {
+        if (goods.guid == guid) {
           goods.selected = !goods.selected;
         }
         return goods;
@@ -81,17 +79,15 @@ export default new Vuex.Store({
         }
       })
     },
-<<<<<<< HEAD
     // 登陆状态切换
     Login(state){
       state.isLogin=true;
     },
     Loginout(state){
       state.isLogin=false;
-=======
+    },
     addToCart(state,goods){
       state.cartlist.push(goods)
->>>>>>> d943c002c13625623c6d098b5f2025513d4f50ee
     }
   },
   actions: {
