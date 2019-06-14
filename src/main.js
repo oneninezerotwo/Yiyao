@@ -7,6 +7,16 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 
 Vue.config.productionTip = false
 
+// 登陆判断
+let uname = localStorage.name;
+console.log(uname);
+if(uname){
+  store.commit('Login')
+}else{
+  store.commit('Loginout')
+
+}
+
 new Vue({
   router,
   store,

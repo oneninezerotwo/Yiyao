@@ -5,21 +5,22 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    isLogin:false,
     cartlist: [
-      {
-        img: 'https://p1.maiyaole.com/img/971/971672/120_120.jpg?a=1127706105',
-        qty: 1,
-        price: '12.80',
-        name: '信龙 炉甘石洗剂 100ml',
-        selected: true
-      },
-      {
-        img: 'https://p1.maiyaole.com/img/971/971672/120_120.jpg?a=1127706105',
-        qty: 1,
-        price: '12.80',
-        name: '信龙 炉甘石洗剂 100ml',
-        selected: true
-      }
+      // {
+      //   img: 'https://p1.maiyaole.com/img/971/971672/120_120.jpg?a=1127706105',
+      //   qty: 1,
+      //   price: '12.80',
+      //   name: '信龙 炉甘石洗剂 100ml',
+      //   selected: true
+      // },
+      // {
+      //   img: 'https://p1.maiyaole.com/img/971/971672/120_120.jpg?a=1127706105',
+      //   qty: 1,
+      //   price: '12.80',
+      //   name: '信龙 炉甘石洗剂 100ml',
+      //   selected: true
+      // }
     ],
     cartstate: "编辑",
     CartDelComfirm:false,
@@ -78,6 +79,13 @@ export default new Vuex.Store({
           return goods;
         }
       })
+    },
+    // 登陆状态切换
+    Login(state){
+      state.isLogin=true;
+    },
+    Loginout(state){
+      state.isLogin=false;
     }
   },
   actions: {
