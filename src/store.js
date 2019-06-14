@@ -81,12 +81,17 @@ export default new Vuex.Store({
         }
       })
     },
+<<<<<<< HEAD
     // 登陆状态切换
     Login(state){
       state.isLogin=true;
     },
     Loginout(state){
       state.isLogin=false;
+=======
+    addToCart(state,goods){
+      state.cartlist.push(goods)
+>>>>>>> d943c002c13625623c6d098b5f2025513d4f50ee
     }
   },
   actions: {

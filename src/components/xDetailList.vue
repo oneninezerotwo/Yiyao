@@ -287,7 +287,7 @@
         </div>
       </footer>
     </div>
-
+    
   </div>
 </template>
 
@@ -310,7 +310,7 @@ export default Vue.extend({
     async getData(callback) {
       const data3 = await this.$axios('https://www.easy-mock.com/mock/5cf638f131d44a153b4b0a69/example/data'+this.brandId)
         this.detail = data3.data.product_info
-        // console.log(this.detail)
+        console.log(this.detail)
     },
     show(){
       return this.$store.state.show = 1
@@ -1003,19 +1003,9 @@ img {
 .pro_content .pro_review li span {
   color: #828282;
 }
-.ykplayer .x-endPanel div,
-a,
-p,
-span {
-  padding: 0;
-  margin: 0;
-}
 .pro_content .pro_review li i {
   color: #949494;
   padding: 0 0.13333333rem;
-}
-.pro_content .pro_review li span {
-  color: #828282;
 }
 .ykplayer .x-endPanel div,
 a,
@@ -1093,7 +1083,7 @@ span {
 #selfCartIcon{
       color: #FF6666;
       // text-decoration: none;
-}
+} 
 .pro_bar_tab .pro_add_car,
 .pro_bar_tab .pro_overseas_add_car,
 .pro_bar_tab .pro_add_list {

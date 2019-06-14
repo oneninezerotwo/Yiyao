@@ -4,9 +4,9 @@
       <div class="pro_series_header" @click="hite"></div>
 
       <div class="pro_series pro_series_show" v-show="show">
-        <div class="pro_series_top"><img alt="" class="series_img" src="https://p1.maiyaole.com/img/item/201808/10/20180810095613128.jpg" lazy="loaded">
+        <div class="pro_series_top"><img alt="" class="series_img" :src="this.detail2.mainimg1" lazy="loaded">
           <span class="price">
-            <span>¥</span>12.30</span>
+            <span>¥</span>{{this.detail2.pcSalePrice}}</span>
           <span class="choose_mark">已选：
             <em> 成人 </em>
           </span> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYAAACM/rhtAAAAAXNSR0IArs4c6QAAA05JREFUWAnVmc9PE0EUx9/aYGkpoIliQrwIRg1X/hCU/0D0IsGD0fDLwyYYARH+AQ9492L8E/So4QTRaMSLCahtgtAfQAuu3+/SYdel3c4uu1Bf8jrTznszn77OvJmdGhJSLMvqhesAtB/a7VJUZc2lS6i/MQxjlQ2xCqC6oFPQZWhQoQ99uyKHRKcZqAnNQ48r7MOEZiIBRUeD0B/QqIV9DoaGhLMBNaF/oHEJ+zahRiBQOKSgr6AnJRwrpQUJQ0buJOFUEDhm40jCyFQep1CavlEEEBdEnHOu0Xfm2P8snMOQooHL/iv0ku+3iL/xJ4a4isRe4FBnXOM9RP204YhDBrLYYkcQ0WN251YUTfI86Ps4r4xeL6L4S0Xwvg7c23dLcm9kWh48WpCtfFEbIJf7bfvR9/2HFR0/BmqEhgrwpo5XX1+PpNOtUqlUZGZ2UTY37Wni65rNbsjM3KIkEgk519kuN65f8bV3Nd5inTmPpxIuDi3J5jZkdu6l7O6WJZNJy+TYHenoaKvpS7jZ57StSDtsJ8aG6trW7ACLhRHkkUlbLl44L+OjtyWZPCuFwrbMPFuUra2jP3cEcGQaICDPc4HEgWyRfKF0BDIiODL1E5CHzcBSDzJCODJ1cw5+RuVaYMKqgzMnK5JOtcre/r6Uy6HnnBfjCwHz+PRY+Y+Q05iLOzu7ItjvO7FoJsfrLx4vhc/7An9iy8dAr0n1wNKwxFLv9bz9rCwCrvtZNGpTc65S3pOO9jZJtSalWKq/uhv152lfJyCfwEKJglN57vHEXTvXJZO1V3eIQdZCA3rhVBKut7pDwNHFBuRzayCpB6c6iRByKfhWF2D7cqeg0Ftd9Ylf64jRKHIqgqr0RnLq6Yua26Ky95QrZOMcpLw+KPxfP376JqXSjrS0JJDn9DZ+Qk6MDuFgkZJicRsnoT3/QZxWh4kHViZsaKyyuvpdt3+y2FckdgR5cgX4vAMfT62n57Jux/NVJvl/HppAzOPxMDS6jUo3Xo4dxx6usjifumv47U3diRKDnelmqVnHoMyNzXv1QWoANu/lkQprNZImyjivQsJdvynIajSb8wLTA9m8V8AeUO44T6DL0KBCn8CX6IeJ2g2iU8dgJ/I3xF998g4ZqqZnmAAAAABJRU5ErkJggg==" class="dialogClose" @click="hite"></div>
@@ -27,7 +27,7 @@
             <a href="javascript:;" class="my_btn_add btn_ok" v-on:click="add()"> + </a>
           </div>
         </div>
-        <span class="my_btn_self pro_sure_btn">加入购物车</span>
+        <span class="my_btn_self pro_sure_btn" :data-item="detail2.brandId" @click="addtocart($event)">加入购物车</span>
       </div>
 
     </div>
@@ -39,8 +39,14 @@ import Vue from "vue";
 export default Vue.extend({
   data() {
     return {
-      count: 1
+      count: 1,
+      detail2:[],
+      brandId:null,
     };
+  },
+  created(){
+    this.brandId = this.$route.query.brandId
+    this.getData2()
   },
   computed: {
     show() {
@@ -60,15 +66,34 @@ export default Vue.extend({
       } else {
         this.count -= 1;
       }
+    },
+    async getData2(callback) {
+      const data4 = await this.$axios('https://www.easy-mock.com/mock/5cf638f131d44a153b4b0a69/example/data'+this.brandId)
+        this.detail2 = data4.data.product_info
+        console.log(this.detail2)
+    },
+    addtocart(e){
+        let cart={
+          guid:this.detail2.itemId,
+          img:this.detail2.mainimg1,
+          price: this.detail2.pcSalePrice,
+          name: this.detail2.productName,
+          selected: true,
+          qty: this.count,
+        };
+        this.$store.commit("addToCart",cart);
+
+
     }
+
   }
 });
 </script>
 
 
 <style lang="scss" scoped>
-.active{
-  background:#5577fb !important;
+.active {
+  background: #5577fb !important;
   color: white !important;
 }
 .pro_series_bg_show {
