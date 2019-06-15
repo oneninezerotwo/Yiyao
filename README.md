@@ -28,3 +28,4 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 # Yiyao
+测试连接https://oneninezerotwo.github.io/Yiyao/
