@@ -22,7 +22,7 @@
         <router-link to="/">
           <i class="icon iconfont icon_home"></i>首页
          </router-link>
-        <router-link to="/list">
+        <router-link to="/xFindacure">
           <i class="icon iconfont icon_category"></i>分类
          </router-link>
         <router-link to="/mine">

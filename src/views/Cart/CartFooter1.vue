@@ -49,8 +49,9 @@ export default {
   },
   methods: {
       showDelConfirm(){
-          if(this.totalqty>=1){
-          this.$store.commit("confirmChange");
+        if(this.totalqty>=1){
+        this.$store.commit("confirmChange");
+          this.$store.commit("changeCart");
           }
       }
   },
